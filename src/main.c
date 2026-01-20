@@ -54,16 +54,25 @@ void init(void)
 
 int main(void)
 {
-    uint8_t num = 0;
+    uint32_t num = 0;
     uint8_t cube[6] = {
         0b00100000, //1
         0b10000001, //2
-        
+        0b01100010, //3
+        0b11000011, //4
+        0b11100011, //5
+        0b11011011, //6
     };
 
     init();
 
     while (1) {
+        if (PUSH(DB_S1)) {
+            num++;
+            GPIO_Write(GPIOG, 0b00000000); //všechno zhasnu
+        } else {
+            GPIO_Write(GPIOG, cube[num % 6]);
+        }
     }
 }
 
