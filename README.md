@@ -4,10 +4,8 @@ Kocka project
 Účel/Zadání/Funkce
 -----------------------
 
-* parní mlátička s elektronickým vstřikováním
-    * pára
-    * píst
-    * mikroprocesor
+Při stisku tlačítka se na LEDkách ukáže náhodné číslo 1 - 6
+... jak když hážu kostkou.
 
 
 Schéma zapojení
@@ -18,22 +16,17 @@ Schéma zapojení
 Popis funkce
 -----------------------
 
-1. ono se to
-2. samo se to
+* Rozložení svítících/ zhasnutých LED bude v poli "cube"
+* Náhodné číslo se generuje z času, po který uživatel drží tlačítko:
+    - pokud uživatel drží tlačítkostále se inkrementuje promněnná num
+    - pokud uživatel tlačítko pustí provedeme num % 6 tím získá 0 - 5 respektive 1 - 6
+* zobrazím cube[num]
+* V projetku je:
+    1. jednoduchá varianta pokud jsou všechny LED na jednou portu
+    2. Složitější, ale reálná varianta, kdy je každé LED na jiném portu
 
 ToDo
 -----------------------
 
-* ještě chybí tamto
-
 Zhodnocení
 -----------------------
-
-Na tomto projektu jsem se naučíl jedno a druhé a došlo mi jak funguje třetí.
-Zlepšil jsem se v tamtom.
-
-Svou práci bych ohodnotil chvalitebně, protože jsem nepracoval úplně samostatně,
-ale vše jsem implementoval a prozkoumal.
-
-Svou práci bych ohodnotil výborně. Nepracoval jsem sice samostatně,
-ale nakonec jsem hotový projekt smazal a vytvořil ho celý znovu sám.

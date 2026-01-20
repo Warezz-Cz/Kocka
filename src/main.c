@@ -4,7 +4,8 @@
 #include "milis.h"
 //#include "delay.h"
 //#include "uart1.h"
-//#include <stdio.h>
+#include <stdio.h>
+#include "daughterboard.h"
 
 // Discovery Board
 #ifdef STM8S003
@@ -38,25 +39,31 @@ void init(void)
     init_milis();
     //init_uart1();
 
-    GPIO_Init(LED_PORT, LED_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
+    GPIO_Init(DB_LED1_PORT, DB_LED1_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
+    GPIO_Init(DB_LED2_PORT, DB_LED2_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
+    GPIO_Init(DB_LED4_PORT, DB_LED4_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
+    GPIO_Init(DB_LED5_PORT, DB_LED5_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
+    GPIO_Init(DB_LED6_PORT, DB_LED6_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
+    GPIO_Init(DB_LED7_PORT, DB_LED7_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
+    GPIO_Init(DB_LED8_PORT, DB_LED8_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
+
+    GPIO_Init(DB_S1_PORT, DB_S1_PIN, GPIO_MODE_IN_PU_NO_IT);
 
 }
 
 
 int main(void)
 {
-  
-    uint32_t time = 0;
+    uint8_t num = 0;
+    uint8_t cube[6] = {
+        0b00100000, //1
+        0b10000001, //2
+        
+    };
 
     init();
 
     while (1) {
-        if (milis() - time > 333 ) {
-            REVERSE(LED); 
-            time = milis();
-            //printf("%ld\n", time);
-        }
-        //delay_ms(333);
     }
 }
 
