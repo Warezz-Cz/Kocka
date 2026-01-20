@@ -51,6 +51,64 @@ void init(void)
 
 }
 
+void show_num(uint8_t num) {
+    /*
+    * LED7 - A
+    * LED5 - B
+    * LED8 - C
+    * LED6 - D
+    * LED1 - E
+    * LED4 - F
+    * LED2 - G
+    *   0001000 -- 1
+    *   0010100 -- 2
+    *   1001001 -- 3
+    *   1010101 -- 4
+    *   1011101 -- 5
+    *   1110111 -- 6
+    * ---------------
+    *   ABCDEFG
+    */
+
+    uint8_t cube[6] = {
+        0b0001000,//1
+        0b0010100,//2
+        0b1001001,//3
+        0b1010101,//4
+        0b1011101,//5
+        0b1110111,//6
+    };
+
+    if (0b1000000 & cube[num])
+        HIGH(DB_LED7);
+    else
+        LOW(DB_LED7);
+    if (0b0100000 & cube[num])
+        HIGH(DB_LED5);
+    else
+        LOW(DB_LED5);
+    if (0b0010000 & cube[num])
+        HIGH(DB_LED8);
+    else
+        LOW(DB_LED8);
+    if (0b0001000 & cube[num])
+        HIGH(DB_LED6);
+    else
+        LOW(DB_LED6);
+    if (0b0000100 & cube[num])
+        HIGH(DB_LED1);
+    else
+        LOW(DB_LED1);
+    if (0b0000010 & cube[num])
+        HIGH(DB_LED4);
+    else
+        LOW(DB_LED4);
+    if (0b0000001 & cube[num])
+        HIGH(DB_LED2);
+    else
+        LOW(DB_LED2);    
+
+}
 
 int main(void)
 {
@@ -71,7 +129,8 @@ int main(void)
             num++;
             GPIO_Write(GPIOG, 0b00000000); //všechno zhasnu
         } else {
-            GPIO_Write(GPIOG, cube[num % 6]);
+            //GPIO_Write(GPIOG, cube[num % 6]);
+            show_num(num % 6);
         }
     }
 }
